@@ -1,6 +1,7 @@
 flask
 matplotlib>=3.2.2
 numpy>=1.22.2 # pinned by Snyk to avoid a vulnerability
+libgl1
 opencv-python-headless<4.3
 pillow>=7.1.2
 pyyaml>=5.3.1
