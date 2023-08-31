@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import numpy as np
 from ultralytics import YOLO
+from asgiref.wsgi import WsgiToAsgi
 app = Flask(__name__)
 
 
@@ -22,4 +23,6 @@ def predict():
         return jsonify({'error': str(e)})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    wsgi_app = WsgiToAsgi(app)
+    import uvicorn
+    uvicorn.run(wsgi_app, host='0.0.0.0', port=5000)
